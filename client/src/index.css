@@ -5,6 +5,10 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+html {
+    @apply bg-gray-50 dark:bg-gray-950;
+}
+
 body {
     @apply text-base font-normal text-gray-800 dark:text-gray-200;
     font-family: "Roboto", sans-serif;
