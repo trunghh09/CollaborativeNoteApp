@@ -1,1 +1,36 @@
+/* TODO: Import google fonts  */
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* TODO: Import tailwind css  */
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+body {
+    @apply text-base font-normal text-gray-800 dark:text-gray-200;
+    font-family: "Roboto", sans-serif;
+}
+
+.font-primary,
+p,
+span {
+    font-family: "Roboto", sans-serif;
+}
+
+.font-secondary,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+.font-logo {
+    font-family: "Baloo Tamma 2", system-ui;
+}
+
+.logo {
+    @apply text-2xl font-bold dark:text-gray-100 text-gray-900;
+}
