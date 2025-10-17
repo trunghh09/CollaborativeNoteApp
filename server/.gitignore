@@ -31,3 +31,7 @@ dist-ssr
 # Lock file
 package-lock.json
 yarn.lock
+
+# Prisma
+/src/generated/prisma
+prisma/migrations

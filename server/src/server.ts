@@ -13,7 +13,7 @@ import type { CorsOptions } from "cors";
  * * Custom modules
  */
 import config from "@/config";
-import { limiter, logger } from "@/lib";
+import { limiter, logger, prisma } from "@/lib";
 import serverRoutes from "@/routes";
 
 /**
@@ -39,6 +39,7 @@ const corsOptions: CorsOptions = {
             logger.warn(`CORS error: ${origin} is not allowed by CORS`);
         }
     },
+    credentials: true,
 };
 
 app.use(cors(corsOptions));
@@ -75,6 +76,10 @@ app.use(limiter);
  */
 (async () => {
     try {
+        // TODO: Check DB connection before starting
+        await prisma.$connect();
+        logger.info("✅ Connected to database successfully");
+
         // TODO: Enable routes
         serverRoutes(app);
 
@@ -100,6 +105,7 @@ app.use(limiter);
  */
 const handleServerShutdown = async () => {
     try {
+        await prisma.$disconnect();
         logger.warn("Server SHUTDOWN");
         process.exit(0);
     } catch (err) {
