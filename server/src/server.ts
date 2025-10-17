@@ -14,6 +14,7 @@ import type { CorsOptions } from "cors";
  */
 import config from "@/config";
 import { limiter, logger, prisma } from "@/lib";
+import { errorHandler } from "@/middleware";
 import serverRoutes from "@/routes";
 
 /**
@@ -82,6 +83,9 @@ app.use(limiter);
 
         // TODO: Enable routes
         serverRoutes(app);
+
+        // TODO: Enable error handling middleware
+        app.use(errorHandler);
 
         app.listen(config.PORT, () => {
             logger.info(`Server is running on port ${config.PORT}`);

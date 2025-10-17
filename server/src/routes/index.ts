@@ -15,6 +15,9 @@ const serverRoutes = (app: Application) => {
         });
     });
 
+    /**
+     * * Application endpoint
+     */
     app.use("/api/v1", AuthRoutesV1);
 };
 
